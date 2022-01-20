@@ -41,4 +41,12 @@ public class Column {
             s.append(this.fields.get(this.fields.size() - 1).toString());
         return s.toString();
     }
+    protected void removeField(int row) {
+        this.fields.removeIf(f -> f.getRow() == row);
+    }
+    protected void update(int row, String value) {
+        for (Field f: this.fields)
+            if (f.getRow() == row)
+                f.setValue(value);
+    }
 }

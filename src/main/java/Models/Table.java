@@ -6,7 +6,8 @@ public class Table {
     private String name;
     private HashMap<String, Column> columnsLoc;
 
-    public Table() {
+    public Table(String name) {
+        this.name = name;
         this.columnsLoc = new HashMap<>();
     }
     public void insert(String colName, String value) {
@@ -17,6 +18,11 @@ public class Table {
     }
     public void update(String colName, String value) {
         this.columnsLoc.get(colName).set(value);
+    }
+    public void update(int row, String value) {
+        for (String s: this.columnsLoc.keySet()) {
+            this.columnsLoc.get(s).update(row, value);
+        }
     }
     public double sum(String colName) {
         return this.columnsLoc.get(colName).sum();
@@ -30,5 +36,12 @@ public class Table {
     }
     public void select(String colName, boolean condition) {
         System.out.println(this.columnsLoc.get(colName).print(condition));
+    }
+    public void delete(String colName) {
+        this.columnsLoc.remove(colName);
+    }
+    public void delete(int row) {
+        for (String s: this.columnsLoc.keySet())
+            this.columnsLoc.get(s).removeField(row);
     }
 }

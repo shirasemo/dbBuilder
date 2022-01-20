@@ -11,7 +11,7 @@ public class DataBase {
         this.tables = new HashMap<>();
     }
     public void create(String name) {
-        this.tables.put(name, new Table());
+        this.tables.put(name, new Table(name));
     }
     public void remove(String name) {
         this.tables.remove(name);
