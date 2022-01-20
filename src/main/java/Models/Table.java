@@ -21,4 +21,14 @@ public class Table {
     public double sum(String colName) {
         return this.columnsLoc.get(colName).sum();
     }
+    public void select(String colName) {
+        System.out.println(this.columnsLoc.get(colName).print());
+    }
+    public void select() {
+        for (String s: this.columnsLoc.keySet())
+            System.out.println(this.columnsLoc.get(s).print());
+    }
+    public void select(String colName, boolean condition) {
+        System.out.println(this.columnsLoc.get(colName).print(condition));
+    }
 }

@@ -25,4 +25,20 @@ public class Column {
             sum += Double.parseDouble(f.getValue());
         return sum;
     }
+    protected String print() {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < this.fields.size() - 1; i++)
+            s.append(this.fields.get(i).toString()).append(", ");
+        s.append(this.fields.get(this.fields.size() - 1).toString());
+        return s.toString();
+    }
+    protected String print(boolean condition) {
+        StringBuilder s = new StringBuilder();
+        for (int i = 0; i < this.fields.size() - 1; i++)
+            if (condition)
+                s.append(this.fields.get(i).toString()).append(", ");
+        if (condition)
+            s.append(this.fields.get(this.fields.size() - 1).toString());
+        return s.toString();
+    }
 }
