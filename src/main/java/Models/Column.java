@@ -1,10 +1,16 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Column {
     private String name;
     private List<Field> fields;
+
+    public Column(String name) {
+        this.name = name;
+        this.fields = new ArrayList<>();
+    }
 
     protected void add(String value) {
         this.fields.add(new Field(this.fields.size(), value));
@@ -27,16 +33,19 @@ public class Column {
     }
     protected String print() {
         StringBuilder s = new StringBuilder();
+        s.append(this.name).append(":\n");
         for (int i = 0; i < this.fields.size() - 1; i++)
-            s.append(this.fields.get(i).toString()).append(", ");
-        s.append(this.fields.get(this.fields.size() - 1).toString());
+            s.append(this.fields.get(i).toString()).append("\n");
+        if (this.fields.size() > 0)
+            s.append(this.fields.get(this.fields.size() - 1).toString());
         return s.toString();
     }
     protected String print(boolean condition) {
         StringBuilder s = new StringBuilder();
+        s.append(this.name).append(":\n");
         for (int i = 0; i < this.fields.size() - 1; i++)
             if (condition)
-                s.append(this.fields.get(i).toString()).append(", ");
+                s.append(this.fields.get(i).toString()).append("\n");
         if (condition)
             s.append(this.fields.get(this.fields.size() - 1).toString());
         return s.toString();
